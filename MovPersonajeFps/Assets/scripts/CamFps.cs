@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class CamFps : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float mouseX;
+    float mouseY;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        mouseX += Input.GetAxis("Mouse X");
+        mouseY -= Input.GetAxis("Mouse Y");
+
+        if (mouseY > 40)
+        {
+            mouseY = 40;
+        }
+        else if (mouseY < -40)
+        {
+            mouseY = -40;
+        }
+        Debug.Log(mouseY);
+        transform.eulerAngles = new Vector3(mouseY, mouseX, 0);
     }
 }
